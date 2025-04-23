@@ -52,15 +52,15 @@
         const lang = navigator.language || navigator.userLanguage;
         const isPt = lang.toLowerCase().startsWith("pt");
         const msg = isPt
-          ? 'Redirecionando para o <a href="https://portfolio-web-eosin-three.vercel.app/">meu portfólio</a>...'
-          : 'Redirecting to <a href="https://portfolio-web-eosin-three.vercel.app/">my portfolio</a>...';
+          ? 'Redirecionando para o <a href="https://renanmrbraga.vercel.app/">meu portfólio</a>...'
+          : 'Redirecting to <a href="https://renanmrbraga.vercel.app/">my portfolio</a>...';
 
         document.getElementById("msg").innerHTML = msg;
 
         setTimeout(() => {
           document.body.classList.add("fade-out");
           setTimeout(() => {
-            window.location.href = "https://portfolio-web-eosin-three.vercel.app/";
+            window.location.href = "https://renanmrbraga.vercel.app/";
           }, 1000);
         }, 3000);
       });
