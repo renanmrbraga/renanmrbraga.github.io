@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <style>
+      @font-face {
+        font-family: 'Segoe UI Custom';
+        src: local('Segoe UI'), local('Tahoma'), local('Verdana');
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #0f0f0f;
+        color: #00ccff;
+        font-family: 'Segoe UI Custom', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .fade-out {
+        opacity: 0;
+      }
+
+      .loader {
+        width: 48px;
+        height: 48px;
+        border: 6px solid #333;
+        border-top: 6px solid #00ccff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      a {
+        color: #00ccff;
+        text-decoration: none;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const lang = navigator.language || navigator.userLanguage;
+        const isPt = lang.toLowerCase().startsWith("pt");
+        const msg = isPt
+          ? 'Redirecionando para o <a href="https://portfolio-web-eosin-three.vercel.app/">meu portfólio</a>...'
+          : 'Redirecting to <a href="https://portfolio-web-eosin-three.vercel.app/">my portfolio</a>...';
+
+        document.getElementById("msg").innerHTML = msg;
+
+        setTimeout(() => {
+          document.body.classList.add("fade-out");
+          setTimeout(() => {
+            window.location.href = "https://portfolio-web-eosin-three.vercel.app/";
+          }, 1000);
+        }, 3000);
+      });
+    </script>
+  </head>
+  <body>
+    <div class="loader"></div>
+    <p id="msg"></p>
+  </body>
+</html>
