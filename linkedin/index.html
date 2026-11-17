@@ -68,6 +68,7 @@
           : 'Redirecting to <a href="https://renanmrbraga.vercel.app/">my portfolio</a>...';
 
         document.getElementById("msg").innerHTML = msg;
+        document.querySelector("#msg a").href = target.href;
 
         setTimeout(() => {
           document.body.classList.add("fade-out");
