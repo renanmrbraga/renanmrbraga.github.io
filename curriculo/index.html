@@ -54,7 +54,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         // Encaminha os links de origem para as regras da Vercel.
         const path = window.location.pathname.replace(/\/+$/, "");
-        const redirectPaths = ["/linkedin", "/curriculo"];
+        const redirectPaths = ["/linkedin", "/curriculo", "/github"];
         const targetPath = redirectPaths.includes(path) ? path : "/";
         const target = new URL(targetPath, "https://renanmrbraga.vercel.app");
 
