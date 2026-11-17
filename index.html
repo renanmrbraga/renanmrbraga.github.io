@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -6,16 +6,17 @@
     <title>Redirecting...</title>
     <style>
       @font-face {
-        font-family: 'Segoe UI Custom';
-        src: local('Segoe UI'), local('Tahoma'), local('Verdana');
+        font-family: "Segoe UI Custom";
+        src: local("Segoe UI"), local("Tahoma"), local("Verdana");
       }
 
-      html, body {
+      html,
+      body {
         margin: 0;
         padding: 0;
         background-color: #0f0f0f;
         color: #00ccff;
-        font-family: 'Segoe UI Custom', sans-serif;
+        font-family: "Segoe UI Custom", sans-serif;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -39,7 +40,9 @@
       }
 
       @keyframes spin {
-        to { transform: rotate(360deg); }
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       a {
@@ -49,6 +52,15 @@
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // Encaminha os links de origem para as regras da Vercel.
+        const path = window.location.pathname.replace(/\/+$/, "");
+        const redirectPaths = ["/linkedin", "/curriculo"];
+        const targetPath = redirectPaths.includes(path) ? path : "/";
+        const target = new URL(targetPath, "https://renanmrbraga.vercel.app");
+
+        target.search = window.location.search;
+        target.hash = window.location.hash;
+
         const lang = navigator.language || navigator.userLanguage;
         const isPt = lang.toLowerCase().startsWith("pt");
         const msg = isPt
@@ -60,7 +72,7 @@
         setTimeout(() => {
           document.body.classList.add("fade-out");
           setTimeout(() => {
-            window.location.href = "https://renanmrbraga.vercel.app/";
+            window.location.replace(target.href);
           }, 1000);
         }, 3000);
       });
