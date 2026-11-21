@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://renanmrbraga.vercel.app" />
     <title>Redirecting...</title>
     <style>
       @font-face {
@@ -22,7 +23,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        transition: opacity 1s ease-in-out;
+        transition: opacity 200ms ease-in-out;
       }
 
       .fade-out {
@@ -70,12 +71,15 @@
         document.getElementById("msg").innerHTML = msg;
         document.querySelector("#msg a").href = target.href;
 
+        // Exibe a animação durante 600 ms.
         setTimeout(() => {
           document.body.classList.add("fade-out");
+
+          // Aguarda mais 200 ms para concluir a transição.
           setTimeout(() => {
             window.location.replace(target.href);
-          }, 1000);
-        }, 3000);
+          }, 200);
+        }, 600);
       });
     </script>
   </head>
