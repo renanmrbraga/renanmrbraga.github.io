@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
         margin: 0;
         padding: 0;
         background-color: #0f0f0f;
-        color: #00ccff;
+        color: #f87171;
         font-family: "Segoe UI Custom", sans-serif;
         display: flex;
         flex-direction: column;
@@ -34,7 +34,7 @@
         width: 48px;
         height: 48px;
         border: 6px solid #333;
-        border-top: 6px solid #00ccff;
+        border-top: 6px solid #f87171;
         border-radius: 50%;
         animation: spin 1s linear infinite;
         margin-bottom: 20px;
@@ -47,13 +47,13 @@
       }
 
       a {
-        color: #00ccff;
+        color: #f87171;
         text-decoration: none;
       }
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Encaminha os links de origem para as regras da Vercel.
+        // Forward source paths to the configured Vercel routes.
         const path = window.location.pathname.replace(/\/+$/, "");
         const redirectPaths = ["/linkedin", "/curriculo", "/github"];
         const targetPath = redirectPaths.includes(path) ? path : "/";
@@ -64,6 +64,9 @@
 
         const lang = navigator.language || navigator.userLanguage;
         const isPt = lang.toLowerCase().startsWith("pt");
+
+        // Match the document language to the visitor.
+        document.documentElement.lang = isPt ? "pt-BR" : "en";
         const msg = isPt
           ? 'Redirecionando para o <a href="https://renanmrbraga.vercel.app/">meu portfólio</a>...'
           : 'Redirecting to <a href="https://renanmrbraga.vercel.app/">my portfolio</a>...';
@@ -71,11 +74,11 @@
         document.getElementById("msg").innerHTML = msg;
         document.querySelector("#msg a").href = target.href;
 
-        // Exibe a animação durante 600 ms.
+        // Display the animation for 600 ms.
         setTimeout(() => {
           document.body.classList.add("fade-out");
 
-          // Aguarda mais 200 ms para concluir a transição.
+          // Wait another 200 ms to complete the transition.
           setTimeout(() => {
             window.location.replace(target.href);
           }, 200);
